@@ -1,9 +1,108 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
 	<title></title>
-</head>
-<body>
 
-</body>
+	<!-- Mobile view -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+    <!-- Your custom CSS -->
+    <link rel='stylesheet' type='text/css' href='styles/main.css'>
+
+
+</head>
+	<body>
+
+	<!-- OVER ALL WRAPPER -->
+		<div class = "wrapper">
+			<!-- HEADER -->
+			<div class = "header">
+				<h1> HALLOWEEEEN GAME! </h1>
+
+			</div>
+
+			<!-- MAIN -->
+			<div class = "main-section">
+				<div class = "question-box">
+					
+					<div class = "question-text">
+						<div class="question-title">
+							<h1>
+								What type of argument is this:
+							</h1>
+						</div>
+
+						<div class="question-body">
+							<p>
+								"If there is a being that is greater then anything that could be concieved (god), that being must exist in the mind; even in the mind of someone who denies such a being. Thus, if the greatest possible being exists in the mind, it must also exist in reality. If it only exists in the mind, a greater being must yet exist. Therefore the greatest possible being must exist in reality."
+							</p>
+						</div>
+					</div>
+
+					<div class = "answer-section">
+						<div class = "radio answer">
+							<label class="answer-text">
+							    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+							    Ontological Argument
+							</label>
+						</div>
+						<div class = "radio answer">
+							<label class="answer-text">
+							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							    Strawman Argument
+							</label>
+						</div>
+						<div class = "radio answer">
+							<label class="answer-text">
+							    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+							    A Stupid One
+							</label>
+						</div>
+						<div class = "radio answer">
+							<label class="answer-text">
+							    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+							    Classical
+							</label>
+						</div>
+
+						<div class="buttons">
+							<button id="btn-submit" class="answer-btn btn btn-success pull-right" type="submit">Submit</button>
+							<button id="btn-next" class="answer-btn btn btn-success pull-right" type="submit">Next</button>
+
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+			<!-- FOOTER -->
+			<div class = "footer">
+				<h1 class="pull-left">BEN!</h1>
+				<h1 class="pull-right">SCORE:1000000000</h1>
+
+			</div>
+
+
+		</div>
+
+	    <!-- JQUERY -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	    <!-- BOOTSTRAP JS (for modal an other functions!) -->
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+	    <!-- Your main JS Script -->
+	    <script src="app.js"></script>
+
+	</body>
 </html>
