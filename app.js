@@ -115,6 +115,27 @@ $(document).ready(function(){
 
 
 			else{
+				//first star
+				if(playerPoints<(0.70*totalPossiblePoints)){
+					$("#star1").attr('class','star glyphicon glyphicon-star-empty');
+				}
+				else{
+					$("#star1").attr('class','star glyphicon glyphicon-star');
+				}
+				//second star
+				if(playerPoints<(0.85*totalPossiblePoints)){
+					$("#star2").attr('class','star glyphicon glyphicon-star-empty');
+				}
+				else{
+					$("#star2").attr('class','star glyphicon glyphicon-star');
+				}	
+				//third star
+				if(playerPoints==totalPossiblePoints){	
+					$("#star3").attr('class','star glyphicon glyphicon-star');
+				}
+				else{
+					$("#star3").attr('class','star glyphicon glyphicon-star-empty');
+				}
 				$("#victory-modal").modal('show');
 			}
 		}
