@@ -56,7 +56,7 @@ $(document).ready(function(){
 	currQuestion = questions[currNumber];
 
 
-	numberOfQuestions = questions.length;
+	numberOfQuestions = Math.min(questions.length,10);
 	answeredQuestions = 0;
 
 
