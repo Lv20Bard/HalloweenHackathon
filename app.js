@@ -171,13 +171,8 @@ var Question15 = {
 	answer2:"Alucard",
 	answer3:"Vlad the Impaler",
 	answer4:"Van Helsing",
-<<<<<<< HEAD
-	correctAnswer:"",
-	points: 125
-=======
 	correctAnswer:"Vlad the Impaler",
 	points: 100
->>>>>>> Lv20Bard/BenBranch
 }
 var Question16 = {
 
@@ -235,11 +230,7 @@ var Question20 = {
 	points: 100
 }
 //fill the array
-<<<<<<< HEAD
 var questionsAll = [Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15, Question16, Question17, Question18, Question19, Question20];
-=======
-var questionsAll = [Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15, Question16, Question17];
->>>>>>> Lv20Bard/BenBranch
 var questionsEasy = [];
 var questionsMedium = [];
 var questionsHard = [];
