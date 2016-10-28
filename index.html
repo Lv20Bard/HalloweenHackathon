@@ -1,9 +1,190 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
 	<title></title>
-</head>
-<body>
 
-</body>
+	<!-- Mobile view -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+    <!-- Your custom CSS -->
+    <link rel='stylesheet' type='text/css' href='styles/main.css'>
+
+
+</head>
+	<body>
+
+	<!-- OVER ALL WRAPPER -->
+		<div class = "wrapper">
+			<!-- HEADER -->
+			<div class = "header">
+				<h1> HALLOWEEEEN GAME! </h1>
+				<h1 class="pull-right"><span id="answered-questions"></span> questions out of <span id="total-questions"></span></h1>
+
+			</div>
+
+			<!-- MAIN -->
+			<div class = "main-section">
+				<div class = "question-box">
+					
+					<div class = "question-text">
+						<div class="question-title">
+							<h1>
+								What type of argument is this:
+							</h1>
+
+							<h1 id="question-value" class="pull-right"> 
+								Question Value: 
+							</h1>
+						</div>
+
+						<div class="question-body">
+							<p>
+								"If there is a being that is greater then anything that could be concieved (god), that being must exist in the mind; even in the mind of someone who denies such a being. Thus, if the greatest possible being exists in the mind, it must also exist in reality. If it only exists in the mind, a greater being must yet exist. Therefore the greatest possible being must exist in reality and in the mind."
+							</p>
+						</div>
+					</div>
+
+					<div class = "answer-section">
+						<div class = "radio answer" >
+							<label class="answer-text" id="answer-text1">
+							    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+							    Ontological Argument
+							</label>
+						</div>
+						<div class = "radio answer" >
+							<label class="answer-text" id="answer-text2">
+							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							    Strawman Argument
+							</label>
+						</div>
+						<div class = "radio answer" >
+							<label class="answer-text" id="answer-text3">
+							    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+							    A Stupid One
+							</label>
+						</div>
+						<div class = "radio answer" >
+							<label class="answer-text" id="answer-text4">
+							    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+							    Classical
+							</label>
+						</div>
+
+						<div class="buttons">
+<!-- 							<button id="btn-submit" class="answer-btn btn btn-success pull-right" type="submit">Submit</button> -->
+							<button id="btn-next" class="answer-btn btn btn-success pull-right" type="submit">Next</button>
+
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+			<!-- FOOTER -->
+			<div class = "footer">
+				<h1 id="player-Name" class="pull-left">BEN!</h1>
+				<h1 class="pull-right" id="player-score">SCORE:</h1>
+
+			</div>
+
+
+		</div>
+
+<!-- ******************************************************************** MODALS! *******************************************************************-->
+		<div class="modal fade" id="start-modal" tabindex="-1" role="dialog" aria-labelledby="startModal">
+  			<div class="modal-dialog" role="document">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<h4 class="modal-title">Lets play spooky halloween game!</h4>
+      				</div>
+      				<div class="modal-body" id="start-modal-body">
+      					<h4>What is name?</h4>
+      					<input type="name" class="form-control" id="playerName" placeholder="Name">
+
+
+      				</div>
+      				<div class="modal-footer">
+      					<button type="button" id="start-btn" class="btn btn-primary">START!</button>
+			      	</div>
+			    </div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+		<div class="modal fade" id="victory-modal" tabindex="-1" role="dialog" aria-labelledby="victoryModal">
+  			<div class="modal-dialog" role="document">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<h4 class="modal-title">YOU WIN!</h4>
+      				</div>
+      				
+
+      				<div class="modal-body">
+        				<p>Good job!</p>
+        				<p class="end-game-points">You got <span class="playerGotPoints"></span> out of a possible <span class="maxPointsForGame"></span> points.</p>
+        				<i id="star1" class="star glyphicon glyphicon-star-empty"></i>
+        				<i id="star2" class="star glyphicon glyphicon-star-empty"></i>
+        				<i id="star3" class="star glyphicon glyphicon-star-empty"></i>
+        			</div>
+      				
+
+      				<div class="modal-footer">	
+      					<button type="button" class="again-btn btn btn-primary">AGAIN!</button>
+			      	</div>
+			    </div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div class="modal fade" id="loss-modal" tabindex="-1" role="dialog" aria-labelledby="lossModal">
+  			<div class="modal-dialog" role="document">
+    			<div class="modal-content">
+
+      				<div class="modal-header">
+        				<h4 class="modal-title">YOU LOST!</h4>
+      				</div>
+
+      				<div class="modal-body">
+        				<p>Unbelievable</p>
+        				<p class="end-game-points">You got <span class="playerGotPoints"></span> out of a possible <span class="maxPointsForGame"></span> points.</p>
+        				<i class="star glyphicon glyphicon-star-empty"></i>
+        				<i class="star glyphicon glyphicon-star-empty"></i>
+        				<i class="star glyphicon glyphicon-star-empty"></i>
+      				</div>
+
+      				<div class="modal-footer">
+      					<button type="button" class="again-btn btn btn-primary">AGAIN!</button>
+			      	</div>
+			    </div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+
+
+<!-- ***************************************************************** END OF MODALS !***************************************************************-->
+
+
+	    <!-- JQUERY -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	    <!-- FontAwesome -->
+	    <script src="https://use.fontawesome.com/f618e64766.js"></script>
+
+	    <!-- BOOTSTRAP JS (for modal an other functions!) -->
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+	    <!-- Your main JS Script -->
+	    <script src="app.js"></script>
+
+	</body>
 </html>
