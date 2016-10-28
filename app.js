@@ -231,10 +231,11 @@ var Question20 = {
 }
 //fill the array
 var questionsAll = [Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15, Question16, Question17, Question18, Question19, Question20];
-var questionsEasy = [];
-var questionsMedium = [];
-var questionsHard = [];
-var questionsExtreme = [];
+var questionsEasy = [Question5, Question7, Question10, Question13, Question15, Question20];
+var questionsMedium = [Question2, Question3, Question4, Question9, Question11, Question12];
+var questionsHard = [Question8, Question16, Question18];
+var questionsHarder = [Question1, Question14, Question19];
+var questionsExtreme = [Question6, Question17];
 var questions = [];
 var playerPoints = 0;
 var answeredQuestions = 0;
