@@ -262,7 +262,7 @@ $(document).ready(function(){
 
 	$(".start-btn").click(function(e){
 		var difficulity = $(this).data('rating');
-
+		console.log(difficulity);
 		if($('#playerName').val() != ""){	
 
 
@@ -282,7 +282,7 @@ $(document).ready(function(){
 				questions = questionsAll;
 			}
 
-
+			console.log(questions);
 
 			//Show the starting modal, and do things related to that
 			$("#btn-next").hide();
@@ -398,7 +398,7 @@ function getRandomInt(min, max) {
 
 
 function refreshQuestions (currQuestion){
-
+	
 	//load a question from the array into the site
 	$(".question-title").html(`
 		<h1>
