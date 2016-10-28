@@ -106,7 +106,7 @@ var Question9 = {
 	answer3:"Bad Luck",
 	answer4:"Fame",
 	correctAnswer:"Good Luck",
-	points: 100
+	points: 125
 }
 var Question10 = {
 
@@ -176,28 +176,61 @@ var Question15 = {
 }
 var Question16 = {
 
-	title: "",
-	questionBody:"",
-	answer1:"",
-	answer2:"",
-	answer3:"",
-	answer4:"",
-	correctAnswer:"",
-	points: 100
+	title: "All I see is me!",
+	questionBody:"According to superstition, if you stare into a mirror at midnight on Halloween, what will you see?",
+	answer1:"A Ghost of a family member",
+	answer2:"Your future husband or wife",
+	answer3:"How you will pass away",
+	answer4:"Yourself in the afterlife",
+	correctAnswer:"Your future husband or wife",
+	points: 150
 }
 var Question17 = {
 
-	title: "",
-	questionBody:"",
-	answer1:"",
-	answer2:"",
-	answer3:"",
-	answer4:"",
-	correctAnswer:"",
+	title: "I think I have a phobia just for this question.",
+	questionBody:"Which phobia means you have an intense fear of Halloween? ",
+	answer1:"Aeatidephobia",
+	answer2:"Photophobia",
+	answer3:"HelioPhobia",
+	answer4:"Samhnainophobia",
+	correctAnswer:"Samhnainophobia",
+	points: 200
+}
+var Question18 = {
+
+	title: "The character that lets him kick the foot ball.",
+	questionBody:"Every Halloween, Charlie Brown helps his friend Linus wait for what character to appear?",
+	answer1:"The Wicked Witch",
+	answer2:"The Great Pumpkin",
+	answer3:"The Headless Horseman",
+	answer4:"The Spook King",
+	correctAnswer:"The Great Pumpkin",
+	points: 150
+}
+var Question19 = {
+
+	title: "Here pumkin. ",
+	questionBody:"From which region in the world do pumpkins originate?",
+	answer1:"Europe",
+	answer2:"Central America",
+	answer3:"East Asia",
+	answer4:"Middle East",
+	correctAnswer:"Central America",
+	points: 175
+}
+var Question20 = {
+
+	title: "They bob it to music!!! PARTY!",
+	questionBody:"What do people bob for on Halloween?",
+	answer1:"Onions",
+	answer2:"Apples",
+	answer3:"Grapes",
+	answer4:"Oranges",
+	correctAnswer:"Apples",
 	points: 100
 }
 //fill the array
-var questionsAll = [Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15, Question16, Question17];
+var questionsAll = [Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15, Question16, Question17, Question18, Question19, Question20];
 var questionsEasy = [];
 var questionsMedium = [];
 var questionsHard = [];
