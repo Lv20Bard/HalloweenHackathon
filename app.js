@@ -35,8 +35,8 @@ var Question2 = {
 //fill the array
 var questions = [Question1, Question2];
 var playerPoints = 0;
-var answeredQuestions;
-var numberOfQuestions;
+var answeredQuestions = 0;
+var numberOfQuestions = 0;
 var totalPossiblePoints = 0;
 var pointsLostWhenWrong = 0;
 
@@ -56,8 +56,13 @@ $(document).ready(function(){
 	currQuestion = questions[currNumber];
 
 
-	$("#player-score").text("SCORE: "+playerPoints);
+	numberOfQuestions = questions.length;
+	answeredQuestions = 0;
 
+
+	$("#player-score").text("SCORE: "+playerPoints);
+	$("#answered-questions").html(`${answeredQuestions}`);
+	$("#total-questions").html(`${numberOfQuestions}`);	
 
 	//Show the starting modal, and do things related to that
 	$("#btn-next").hide();
@@ -100,7 +105,7 @@ $(document).ready(function(){
 
 	//go to next question
 	$("#btn-next").click(function(e){
-		if(questions.length == 0){
+		if(questions.length == 0 || answeredQuestions == numberOfQuestions){
 			
 			$(".playerGotPoints").html(`${playerPoints}`);
 
@@ -220,7 +225,9 @@ function refreshQuestions (currQuestion){
 	    </button>
 	`);
 
+	answeredQuestions++;
 	$("#player-score").text("SCORE: "+playerPoints);
+	$("#answered-questions").html(`${answeredQuestions}`);
 
 	//submit your answer
 	$(".question-btn").click(function(e){	
