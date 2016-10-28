@@ -171,7 +171,7 @@ var Question15 = {
 	answer2:"Alucard",
 	answer3:"Vlad the Impaler",
 	answer4:"Van Helsing",
-	correctAnswer:"",
+	correctAnswer:"Vlad the Impaler",
 	points: 100
 }
 var Question16 = {
@@ -197,11 +197,12 @@ var Question17 = {
 	points: 100
 }
 //fill the array
-var questions = [Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15, Question16, Question17];
+var questionsAll = [Question1, Question2, Question3, Question4, Question5, Question6, Question7, Question8, Question9, Question10, Question11, Question12, Question13, Question14, Question15, Question16, Question17];
 var questionsEasy = [];
 var questionsMedium = [];
 var questionsHard = [];
 var questionsExtreme = [];
+var questions = [];
 var playerPoints = 0;
 var answeredQuestions = 0;
 var numberOfQuestions = 0;
@@ -220,40 +221,60 @@ $(document).ready(function(){
 
 
 
-	currNumber = getRandomInt(0, questions.length);
-	currQuestion = questions[currNumber];
-
-
-	numberOfQuestions = questions.length;
-	answeredQuestions = 0;
-
-
-	$("#player-score").text("SCORE: "+playerPoints);
-	$("#answered-questions").html(`${answeredQuestions}`);
-	$("#total-questions").html(`${numberOfQuestions}`);	
-
-	//Show the starting modal, and do things related to that
-	$("#btn-next").hide();
-
-	questions.splice(currNumber,1);
-	refreshQuestions(currQuestion);
-
-
 
 
 	$("#start-modal").modal('show');
 	$(".wrapper").hide();
 
-	$("#start-btn").click(function(e){
-		
+	$(".start-btn").click(function(e){
+		var difficulity = $(this).data('rating');
 
 		if($('#playerName').val() != ""){	
+
+
+			if( difficulity == "easy"){
+				questions = questionsEasy;
+			}
+			else if( difficulity == "medium"){
+				questions = questionsMedium;
+			}
+			else if( difficulity =="hard"){
+				questions = questionsHard;
+			}
+			else if( difficulity =="extreme"){
+				questions = questionsExtreme;
+			}
+			else{
+				questions = questionsAll;
+			}
+
+
+
+			//Show the starting modal, and do things related to that
+			$("#btn-next").hide();
+
+			currNumber = getRandomInt(0, questions.length);
+			currQuestion = questions[currNumber];
+
+			numberOfQuestions = Math.min(questions.length,10);
+			answeredQuestions = 0;
+
+			questions.splice(currNumber,1);
+			refreshQuestions(currQuestion);
+			
+
+			$("#player-score").text("SCORE: "+playerPoints);
+			$("#answered-questions").html(`${answeredQuestions}`);
+			$("#total-questions").html(`${numberOfQuestions}`);	
+
 			$('#player-Name').text($('#playerName').val());
 			$(".wrapper").show();
 			$("#start-modal").modal('hide');
 
 		}
 		else{
+
+
 			$("#start-modal-body").attr('class','modal-body has-error');
 			$("#playerName").attr('placeholder','YOU MUST ENTER NAME!')
 		}
