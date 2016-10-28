@@ -203,5 +203,12 @@ bottom:0;
   height: 100%;
 }
 
+h4,p{
+  color: #000;
+}
+
+.star{
+  color: gold;
+}
 
 

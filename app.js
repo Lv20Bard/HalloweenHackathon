@@ -17,7 +17,7 @@ var Question1 = {
 	answer3:"LAMO",
 	answer4:"Alians",
 	correctAnswer:"LAMO",
-	points:"100"
+	points:100
 }
 
 var Question2 = {
@@ -29,9 +29,16 @@ var Question2 = {
 	answer3:"Charles Dickens?",
 	answer4:"Is this even a question...",
 	correctAnswer:"Is this even a question...",
-	points:"100"
+	points: 100
 }
 
+//fill the array
+var questions = [Question1, Question2];
+var playerPoints = 0;
+var answeredQuestions = 0;
+var numberOfQuestions = 0;
+var totalPossiblePoints = 0;
+var pointsLostWhenWrong = 0;
 
 
 $(document).ready(function(){
@@ -39,94 +46,121 @@ $(document).ready(function(){
 	//vars for later
 	var currNumber;
 	var currQuestion = {};
-	var numberOfQuestions;
+	answeredQuestions = 0;
+	playerPoints = 0;
 
-	//fill the array
-	var questions = [Question1, Question2];
+
+
 
 	currNumber = getRandomInt(0, questions.length);
 	currQuestion = questions[currNumber];
 
 
-
-	//load a question from the array into the site
-	$(".question-title").html(`
-		${currQuestion.title}
-	`);
-
-	$(".question-body").html(`
-		<p>${currQuestion.questionBody}</p>
-	`);
-
-	
+	numberOfQuestions = questions.length;
+	answeredQuestions = 0;
 
 
-	$("#answer-text1").html(`
-	    <input class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios1" value="${currQuestion.answer1}">
+	$("#player-score").text("SCORE: "+playerPoints);
+	$("#answered-questions").html(`${answeredQuestions}`);
+	$("#total-questions").html(`${numberOfQuestions}`);	
 
-	`);
+	//Show the starting modal, and do things related to that
+	$("#btn-next").hide();
 
-	$("#answer-text2").html(`
-	    <input class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios2" value="${currQuestion.answer2}">
-
-	`);
-
-	$("#answer-text3").html(`
-	    <input class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios3" value="${currQuestion.answer3}">
-
-	`);
-
-	$("#answer-text4").html(`
-	    <input class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios4" value="${currQuestion.answer4}">
-
-	`);
+	questions.splice(currNumber,1);
+	refreshQuestions(currQuestion);
 
 
-	// //submit your answer
-	// $("#btn-submit").click(function(e){
-	// 	if(CurrQuestion.correctAnswer == ){
-
-	// 	}
-	// 	else{
-
-	// 	}
-	// });
 
 
-	//go to next question
-	$("#btn-next").click(function(e){
-		if(questions.length == 0){
-			//Show the end of game modal
+	$("#start-modal").modal('show');
+	$(".wrapper").hide();
+
+	$("#start-btn").click(function(e){
+		
+
+		if($('#playerName').val() != ""){	
+			$('#player-Name').text($('#playerName').val());
+			$(".wrapper").show();
+			$("#start-modal").modal('hide');
+
 		}
 		else{
-			//hide the next button
-			$("#btn-next").hide();
-			$("#btn-submit").show();
-
-
-			//get a new random number
-			currNumber = getRandomInt(0, questions.length);
-
-
+			$("#start-modal-body").attr('class','modal-body has-error');
+			$("#playerName").attr('placeholder','YOU MUST ENTER NAME!')
 		}
+
+
+	});
+
+
+
+	$(".again-btn").click(function(e){
+		location.reload();
 	});
 
 
 
 
 
+	//go to next question
+	$("#btn-next").click(function(e){
+		if(questions.length == 0 || answeredQuestions == numberOfQuestions){
+			
+			$(".playerGotPoints").html(`${playerPoints}`);
 
 
+			$(".maxPointsForGame").html(`${totalPossiblePoints}`);
+
+			//Show the end of game modal
+			$(".wrapper").hide();
+			if(playerPoints<(0.5*totalPossiblePoints)){
+				$("#loss-modal").modal('show');
+			}
 
 
+			else{
+				//first star
+				if(playerPoints<(0.70*totalPossiblePoints)){
+					$("#star1").attr('class','star glyphicon glyphicon-star-empty');
+				}
+				else{
+					$("#star1").attr('class','star glyphicon glyphicon-star');
+				}
+				//second star
+				if(playerPoints<(0.85*totalPossiblePoints)){
+					$("#star2").attr('class','star glyphicon glyphicon-star-empty');
+				}
+				else{
+					$("#star2").attr('class','star glyphicon glyphicon-star');
+				}	
+				//third star
+				if(playerPoints==totalPossiblePoints){	
+					$("#star3").attr('class','star glyphicon glyphicon-star');
+				}
+				else{
+					$("#star3").attr('class','star glyphicon glyphicon-star-empty');
+				}
+				$("#victory-modal").modal('show');
+			}
+		}
+		else{
+			//hide the next button
+			$("#btn-next").hide();
 
 
+			currNumber = getRandomInt(0, questions.length);
+			currQuestion = questions[currNumber];
+
+			questions.splice(currNumber,1);
+			refreshQuestions(currQuestion);
+			//load a question from the array into the site
+			
+
+		}
 
 
-
-
-
-
+	});
 
 
 
@@ -138,5 +172,85 @@ function getRandomInt(min, max) {
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min)) + min;
 }
+
+
+function refreshQuestions (currQuestion){
+
+	//load a question from the array into the site
+	$(".question-title").html(`
+		<h1>
+			${currQuestion.title}
+		</h1>
+
+
+		<h1 id="question-value" class="pull-right"> 
+			Question Value: ${currQuestion.points} 
+		</h1>
+	`);
+
+	totalPossiblePoints += currQuestion.points;
+	pointsLostWhenWrong = (0.33*currQuestion.points);
+
+
+	$(".question-body").html(`
+		<p>${currQuestion.questionBody}</p>
+	`);
+
+
+
+	$("#btn-next").hide();
+
+
+	$("#answer-text1").html(`
+	    <button class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios1" value="${currQuestion.answer1}">
+	    ${currQuestion.answer1}
+	    </button>
+	`);
+
+	$("#answer-text2").html(`
+	    <button class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios2" value="${currQuestion.answer2}">
+	    ${currQuestion.answer2}
+	    </button>
+	`);
+
+	$("#answer-text3").html(`
+	    <button class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios3" value="${currQuestion.answer3}">
+	    ${currQuestion.answer3}
+	    </button>
+	`);
+
+	$("#answer-text4").html(`
+	    <button class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios4" value="${currQuestion.answer4}">
+	    ${currQuestion.answer4}
+	    </button>
+	`);
+
+	answeredQuestions++;
+	$("#player-score").text("SCORE: "+playerPoints);
+	$("#answered-questions").html(`${answeredQuestions}`);
+
+	//submit your answer
+	$(".question-btn").click(function(e){	
+		var clickedAnswer = $(this).val();
+		if(currQuestion.correctAnswer == clickedAnswer){
+			$(this).attr('class', 'btn btn-success question-btn');
+			$(".question-btn").attr('disabled', 'disabled');
+			$('#btn-next').show();
+			playerPoints += currQuestion.points;
+			$("#player-score").text("SCORE: "+playerPoints);
+
+
+		}
+		else{
+			$(this).attr('class', 'btn btn-danger question-btn');
+			$(this).attr('disabled', 'disabled');
+			currQuestion.points -= pointsLostWhenWrong;
+			$("#question-value").text("Question Value: "+currQuestion.points);
+
+		}
+	});
+
+}
+
 
 
