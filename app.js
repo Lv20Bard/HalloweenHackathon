@@ -406,9 +406,9 @@ function refreshQuestions (currQuestion){
 		</h1>
 
 
-		<h1 id="question-value" class="pull-right"> 
+		<h2 id="question-value"> 
 			Question Value: ${currQuestion.points} 
-		</h1>
+		</h2>
 	`);
 
 	totalPossiblePoints += currQuestion.points;
@@ -425,25 +425,25 @@ function refreshQuestions (currQuestion){
 
 
 	$("#answer-text1").html(`
-	    <button class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios1" value="${currQuestion.answer1}">
+	    <button class="btn btn-default question-btn center-block" name="optionsRadios" id="optionsRadios1" value="${currQuestion.answer1}">
 	    ${currQuestion.answer1}
 	    </button>
 	`);
 
 	$("#answer-text2").html(`
-	    <button class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios2" value="${currQuestion.answer2}">
+	    <button class="btn btn-default question-btn center-block" name="optionsRadios" id="optionsRadios2" value="${currQuestion.answer2}">
 	    ${currQuestion.answer2}
 	    </button>
 	`);
 
 	$("#answer-text3").html(`
-	    <button class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios3" value="${currQuestion.answer3}">
+	    <button class="btn btn-default question-btn center-block" name="optionsRadios" id="optionsRadios3" value="${currQuestion.answer3}">
 	    ${currQuestion.answer3}
 	    </button>
 	`);
 
 	$("#answer-text4").html(`
-	    <button class="btn btn-default question-btn" name="optionsRadios" id="optionsRadios4" value="${currQuestion.answer4}">
+	    <button class="btn btn-default question-btn center-block" name="optionsRadios" id="optionsRadios4" value="${currQuestion.answer4}">
 	    ${currQuestion.answer4}
 	    </button>
 	`);
@@ -456,7 +456,7 @@ function refreshQuestions (currQuestion){
 	$(".question-btn").click(function(e){	
 		var clickedAnswer = $(this).val();
 		if(currQuestion.correctAnswer == clickedAnswer){
-			$(this).attr('class', 'btn btn-success question-btn');
+			$(this).attr('class', 'btn btn-success question-btn center-block');
 			$(".question-btn").attr('disabled', 'disabled');
 			$('#btn-next').show();
 			playerPoints += currQuestion.points;
@@ -465,7 +465,7 @@ function refreshQuestions (currQuestion){
 
 		}
 		else{
-			$(this).attr('class', 'btn btn-danger question-btn');
+			$(this).attr('class', 'btn btn-danger question-btn center-block');
 			$(this).attr('disabled', 'disabled');
 			currQuestion.points -= pointsLostWhenWrong;
 			$("#question-value").text("Question Value: "+currQuestion.points);
