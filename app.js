@@ -339,27 +339,34 @@ $(document).ready(function(){
 			$(".wrapper").hide();
 			if(playerPoints<(0.5*totalPossiblePoints)){
 				$("#loss-modal").modal('show');
+				$("#loss-image").attr('src','http://3.bp.blogspot.com/-2nwTH1q1jgg/VApOa5YfffI/AAAAAAAABGI/L9cN0DAfYOE/s1600/evil%2Bdead%2Bcellar.gif')
+
 			}
 
 
 			else{
 				//first star
-				if(playerPoints<(0.70*totalPossiblePoints)){
+				if(playerPoints>(0.50*totalPossiblePoints)){
+					$("#star1").attr('class','star glyphicon glyphicon-star');
+					$("#victory-image").attr('src', 'https://s-media-cache-ak0.pinimg.com/originals/44/c9/ce/44c9cec18f20baee1b5663ccf7891bdb.jpg');
+				}
+				else{
 					$("#star1").attr('class','star glyphicon glyphicon-star-empty');
 				}
-				else{
-					$("#star1").attr('class','star glyphicon glyphicon-star');
-				}
 				//second star
-				if(playerPoints<(0.85*totalPossiblePoints)){
-					$("#star2").attr('class','star glyphicon glyphicon-star-empty');
+				if(playerPoints>(0.75*totalPossiblePoints)){
+					$("#star2").attr('class','star glyphicon glyphicon-star');
+					$("#victory-image").attr('src', 'https://media.giphy.com/media/HizCK2cLZI2CQ/giphy.gif');
+
 				}
 				else{
-					$("#star2").attr('class','star glyphicon glyphicon-star');
+					$("#star2").attr('class','star glyphicon glyphicon-star-empty');
 				}	
 				//third star
 				if(playerPoints==totalPossiblePoints){	
 					$("#star3").attr('class','star glyphicon glyphicon-star');
+					$("#victory-image").attr('src','http://2.bp.blogspot.com/-_640qdSTTX8/VeR0rZMqZNI/AAAAAAAATok/Zc6a_vy3f20/s1600/pumpkin-dance.gif');
+
 				}
 				else{
 					$("#star3").attr('class','star glyphicon glyphicon-star-empty');
